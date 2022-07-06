@@ -19,7 +19,7 @@
 
 const express = require("express");
 const app = express();
-const PORT = 3000;
+
 const home = require("./routes/home"); //라우팅
 
 // 모듈 : app setting
@@ -29,6 +29,4 @@ app.set("view engine", "ejs");
 
 app.use("/", home); // use -> 미들웨어를 등록하는 메소드.
 
-app.listen(PORT, ()=>{
-    console.log("서버가동");
-})
+module.exports = app;
