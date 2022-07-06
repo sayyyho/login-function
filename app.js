@@ -1,3 +1,5 @@
+"use strict";
+
 // http 모듈 활용 방식
 // const http = require("http"); // 내장모듈
 // const app = http.createServer((req, res)=>{
@@ -17,15 +19,16 @@
 
 const express = require("express");
 const app = express();
+const PORT = 3000;
+const home = require("./routes/home"); //라우팅
 
-app.get("/" , (req, res)=>{
-    res.send("여기는 루트입니다.")
-});
+// 모듈 : app setting
+app.set("views", "./views"); 
+app.set("view engine", "ejs");
 
-app.get("/login" , (req, res)=>{
-    res.send("로그인화면입니다.")
-})
 
-app.listen(3000, ()=>{
+app.use("/", home); // use -> 미들웨어를 등록하는 메소드.
+
+app.listen(PORT, ()=>{
     console.log("서버가동");
 })
